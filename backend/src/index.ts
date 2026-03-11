@@ -30,7 +30,7 @@ app.use("/api/holidays", holidaysRouter);
 app.use(
 	"*",
 	createProxyMiddleware({
-		target: "http://localhost:3000",
+		target: process.env.FRONTEND_URI || "http://localhost:3000",
 		changeOrigin: true,
 		ws: true,
 		logLevel: "warn",
