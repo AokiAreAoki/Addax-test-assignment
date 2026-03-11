@@ -1,0 +1,2 @@
+export const SIMULATE_TASK_DELAY = 250;
+export const SIMULATE_HOLIDAY_DELAY = 750;
