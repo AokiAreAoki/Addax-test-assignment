@@ -23,6 +23,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use("/api/health", (req, res) => {
+	res.status(200).json({ status: "ok" });
+});
+
 app.use("/api/tasks", tasksRouter);
 app.use("/api/holidays", holidaysRouter);
 
