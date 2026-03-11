@@ -1,13 +1,25 @@
-import { NextResponse } from "next/server";
+export default function middleware(request) {
+	const url = new URL(request.url);
 
-export function middleware(request) {
-	const { pathname } = request.nextUrl;
+	if (url.pathname.startsWith('/api')) {
+		const backendUri = process.env.BACKEND_URI;
 
-	if (pathname.startsWith("/api")) {
-		const backendUrl = process.env.BACKEND_URI;
-		const targetUrl = new URL(pathname, backendUrl);
+		if (!backendUri) {
+			return new Response(JSON.stringify({ error: 'BACKEND_URI not configured' }), {
+				status: 500,
+				headers: { 'Content-Type': 'application/json' },
+			});
+		}
 
-		return NextResponse.rewrite(targetUrl);
+		const targetUrl = `${backendUri.replace(/\/$/, '')}${url.pathname}${url.search}`;
+
+		return fetch(targetUrl, {
+			method: request.method,
+			headers: request.headers,
+			body: request.body,
+			// Prevents the browser from following redirects automatically
+			redirect: 'manual',
+		});
 	}
 }
 
