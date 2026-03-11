@@ -58,8 +58,6 @@ export function useUpdateTask() {
 	const queryClient = useQueryClient();
 	return useMutation({
 		mutationFn: async (task: Task) => {
-			console.log("mutating:", task);
-
 			const { data: newTask } = await axios.put<TaskJSON>(
 				`${API_URL}/${task._id}`,
 				task,
@@ -67,8 +65,6 @@ export function useUpdateTask() {
 			return deserialize(newTask);
 		},
 		onSuccess: (task) => {
-			console.log("on mutation success:", task);
-
 			queryClient.invalidateQueries({
 				queryKey: ["tasks", task.date.getFullYear(), task.date.getMonth()],
 				exact: true,

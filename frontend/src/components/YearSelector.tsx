@@ -16,8 +16,6 @@ function generateYearsRange(
 ) {
 	const yearOptions: YearSelector.Props["options"] = [];
 
-	console.log({ middleYear });
-
 	if (currentYear < middleYear - minOffset) {
 		yearOptions.push(currentYearOption);
 	}
@@ -59,8 +57,6 @@ const YearSelector: FC<YearSelector.Props> = ({
 	maxOffset = 5,
 }) => {
 	const yearOptions = useMemo(() => {
-		console.log(value);
-
 		return generateYearsRange(value.value, minOffset, maxOffset);
 	}, [value]);
 

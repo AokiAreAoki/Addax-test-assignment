@@ -55,7 +55,6 @@ export const CalendarGrid: FC<CalendarGrid.Props> = ({
 		const cells: CalendarDayCell[] = [];
 
 		// Fill start with previous month days
-		console.log({ weekOffset });
 		for (let idx = weekOffset - 1; idx >= 0; idx--) {
 			cells.push({
 				timestamp: getDayTimestamp(
@@ -67,7 +66,6 @@ export const CalendarGrid: FC<CalendarGrid.Props> = ({
 		}
 
 		// Fill current month days
-		console.log({ daysInMonth });
 		for (let i = 1; i <= daysInMonth; i++) {
 			cells.push({
 				timestamp: getDayTimestamp(new Date(Date.UTC(year, month, i))),
@@ -130,14 +128,14 @@ export const CalendarGrid: FC<CalendarGrid.Props> = ({
 					const secondHalf = filteredTasks.slice(destination.index);
 					const newTaskOrder = [...firstHalf, movedTask, ...secondHalf];
 
-					console.log({
-						movedTaskID: movedTask._id,
-						filteredTasks,
-						position: destination.index,
-						firstHalf,
-						movedTask,
-						secondHalf,
-					});
+					// console.log({
+					// 	movedTaskID: movedTask._id,
+					// 	filteredTasks,
+					// 	position: destination.index,
+					// 	firstHalf,
+					// 	movedTask,
+					// 	secondHalf,
+					// });
 
 					setTasksLookupMap((prev) => ({
 						...prev,

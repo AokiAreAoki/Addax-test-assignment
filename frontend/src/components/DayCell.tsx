@@ -33,8 +33,6 @@ export const DayCell: FC<DayCell.Props> = ({
 	// });
 	//
 
-	console.log({ holidays });
-
 	return (
 		<Root currentMonth={value.type === "current"} isToday={isToday}>
 			<div className="top-row">

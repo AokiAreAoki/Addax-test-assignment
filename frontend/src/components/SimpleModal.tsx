@@ -28,9 +28,9 @@ export const Modal: FC<Modal.Props> = ({ center, children }) => {
 			setX(-xOverflow);
 			setY(-yOverflow);
 
-			console.log({ rect });
-			console.log("xOverflow:", xOverflow);
-			console.log("yOverflow:", yOverflow);
+			// console.log({ rect });
+			// console.log("xOverflow:", xOverflow);
+			// console.log("yOverflow:", yOverflow);
 		});
 
 		observer.observe(ref.current);

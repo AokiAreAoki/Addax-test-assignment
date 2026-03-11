@@ -135,8 +135,6 @@ export class TaskService {
 			date: dayDate,
 		}).sort(DEFAULT_TASK_SORT);
 
-		console.log("tasks.length", tasks.length);
-
 		if (tasks.length > 1) {
 			const filteredTasks = tasks.filter((task) => task.id !== movedTask.id);
 
