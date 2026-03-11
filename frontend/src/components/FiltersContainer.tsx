@@ -77,7 +77,7 @@ export const FiltersContainer: FC<FiltersContainer.Props> = ({}) => {
 				) : myCountry ? (
 					`My Country: ${myCountry.name}`
 				) : (
-					"My Country"
+					"My Country (not set)"
 				)}
 			</StyledButton>
 
